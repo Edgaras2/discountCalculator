@@ -1,7 +1,6 @@
 package main.java.service;
 
 import main.java.dto.Provider;
-import main.java.exceptions.IoExecpeasdasd;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -23,13 +22,12 @@ public class ShipmentDiscountService {
     private static final String IGNORED = "Ignored";
     private static final int SHIPMENT_DISCOUNT_ALLOWANCE = 10;
     private static final String DATE_PATTERN = "yyyy-MM-dd";
-    public static final String INPUT_TXT = "input.txt";
+    private static final String INPUT_TXT = "input.txt";
 
     public void calculateShipmentDiscount() {
         try {
             URL resource = ShipmentDiscountService.class.getClassLoader().getResource(INPUT_TXT);
             Path path = Paths.get(resource.toURI());
-            // todo handle nullpointer
 
             BufferedReader br = new BufferedReader(new FileReader(path.toFile()));
 
@@ -103,7 +101,6 @@ public class ShipmentDiscountService {
                 }
 
             }
-            // TODO handle exceptions
         } catch (IOException | URISyntaxException e) {
             throw new RuntimeException(INPUT_TXT + " file not found", e);
         }
@@ -131,7 +128,7 @@ public class ShipmentDiscountService {
                 String.format("%.2f", reducedShipmentPrice) + " " + shipmentDiscount);
     }
 
-    public double getLowestSmallPackageShippingPrice(List<Provider> providers, String packageSize) {
+    private double getLowestSmallPackageShippingPrice(List<Provider> providers, String packageSize) {
         double lowestSmallPackagePrice = Double.MAX_VALUE;
         for (Provider provider : providers) {
             Double price = provider.getPrice();

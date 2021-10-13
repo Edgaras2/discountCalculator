@@ -22,7 +22,6 @@ public class ProvidersUtils {
         try {
             URL resource = ShipmentDiscountService.class.getClassLoader().getResource(PROVIDERS_TXT);
             Path path = Paths.get(resource.toURI());
-            // todo handle nullpointer
 
             BufferedReader br = new BufferedReader(new FileReader(path.toFile()));
 
@@ -36,7 +35,6 @@ public class ProvidersUtils {
 
                 providers.add(new Provider(providerName, packageSize, price));
             }
-            // TODO handle exceptions
         } catch (IOException | URISyntaxException e) {
             throw new RuntimeException(PROVIDERS_TXT + " file not found", e);
         }
