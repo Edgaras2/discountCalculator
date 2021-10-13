@@ -1,15 +1,9 @@
-import main.java.service.CalcService;
-
-import java.io.IOException;
-import java.net.URISyntaxException;
+import main.java.service.ShipmentDiscountService;
 
 public class MainClass {
 
-    public static void main(String[] args) throws IOException, URISyntaxException {
-
-        CalcService calcService = new CalcService();
-        calcService.calculation();
-
-
+    public static void main(String[] args) {
+        ShipmentDiscountService shipmentDiscountService = new ShipmentDiscountService();
+        shipmentDiscountService.calculateShipmentDiscount();
     }
 }
